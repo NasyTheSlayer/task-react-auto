@@ -1,8 +1,41 @@
-# React + Vite
+# React Pizza
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- [DEMO LINK](nasytheslayer.github.io/react-pizza/)
 
-Currently, two official plugins are available:
+## General info
+For the test assignment, the primary objective was to develop a web application according to specified requirements. The application was built using modern technologies such as ReactJS 18, React Router v6 for navigation, Axios and Fetch for data fetching from the API, and Prettier for code formatting. Styling was accomplished using CSS-Modules/SCSS to ensure modularity and maintainability.
+The API utilized for this project was Mokky.dev, focusing on automotive data. The web application allows users to interact with the interface, browse different car models displayed on maps, view detailed information about each car, edit their properties within the map interface, and create new maps. Additionally, filters and a search functionality were implemented to enhance user convenience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies
+Project was created with:
+- ReactJS 18
+- React Router v6
+- Axios + Fetch
+- Prettier
+- CSS-Modules / SCSS 
+
+## Setup
+1. Use 14 version of node.js:
+```
+$ nvm use 14
+```
+
+2. Clone the repository to your local machine, open terminal (GitBash for Windows users) and clone repo with command bellow:
+```
+$ git clone https://github.com/NasyTheSlayer/react-pizza.git
+```
+
+3. Open project in terminal (or GitBash for Windows users):
+```
+$ code react-pizza
+```
+
+4. Set up project and install necessary packages in the code-editor you use:
+```
+$ npm install
+```
+
+5. Open the project in browser:
+```
+$ npm start
+```
