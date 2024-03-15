@@ -6,7 +6,7 @@ import { FiSave } from "react-icons/fi";
 
 import styles from "./AddCart.module.scss";
 
-const AddCart = ({ update }) => {
+const AddCart = () => {
   const [newCar, setNewCar] = useState({
     manufacturer: "",
     model: "",
@@ -83,7 +83,6 @@ const AddCart = ({ update }) => {
       .then(() => {
         console.log("Acces");
         havigate("/");
-        update();
       })
       .catch((err) => {
         console.error(err);
@@ -104,6 +103,7 @@ const AddCart = ({ update }) => {
               type="text"
               name="manufacturer"
               value={newCar.manufacturer}
+              required
               onChange={(event) => handleChange(event, "manufacturer")}
             />
           </div>
@@ -113,6 +113,7 @@ const AddCart = ({ update }) => {
               type="text"
               name="model"
               value={newCar.model}
+              required
               onChange={(event) => handleChange(event, "model")}
             />
           </div>
@@ -122,6 +123,7 @@ const AddCart = ({ update }) => {
               type="number"
               name="year"
               value={newCar.year}
+              required
               onChange={(event) => handleChange(event, "year")}
             />
           </div>
@@ -131,6 +133,7 @@ const AddCart = ({ update }) => {
               type="text"
               name="color"
               value={newCar.color}
+              required
               onChange={(event) => handleChange(event, "color")}
             />
           </div>
@@ -142,6 +145,7 @@ const AddCart = ({ update }) => {
                 type="text"
                 name="type"
                 value={newCar.engine.type}
+                required
                 onChange={(event) => handleChange(event, "engine.type")}
               />
             </div>
@@ -151,6 +155,7 @@ const AddCart = ({ update }) => {
                 type="text"
                 name="horsepower"
                 value={newCar.engine.horsepower}
+                required
                 onChange={(event) => handleChange(event, "engine.horsepower")}
               />
             </div>
@@ -162,6 +167,7 @@ const AddCart = ({ update }) => {
                   type="text"
                   name="type"
                   value={newCar.engine.fuelSystem.type}
+                  required
                   onChange={(event) =>
                     handleChange(event, "engine.fuelSystem.type")
                   }
@@ -173,6 +179,7 @@ const AddCart = ({ update }) => {
                   type="text"
                   name="efficiency"
                   value={newCar.engine.fuelSystem.efficiency}
+                  required
                   onChange={(event) =>
                     handleChange(event, "engine.fuelSystem.efficiency")
                   }
@@ -186,6 +193,7 @@ const AddCart = ({ update }) => {
                     type="text"
                     name="co2"
                     value={newCar.engine.fuelSystem.emissions.co2}
+                    required
                     onChange={(event) =>
                       handleChange(event, "engine.fuelSystem.emissions.co2")
                     }
@@ -197,6 +205,7 @@ const AddCart = ({ update }) => {
                     type="text"
                     name="nox"
                     value={newCar.engine.fuelSystem.emissions.nox}
+                    required
                     onChange={(event) =>
                       handleChange(event, "engine.fuelSystem.emissions.nox")
                     }
@@ -212,6 +221,7 @@ const AddCart = ({ update }) => {
                 type="text"
                 name="features"
                 value={newCar.features}
+                required
                 onChange={(event) => handleChange(event, "features")}
               />
             </div>
@@ -224,6 +234,7 @@ const AddCart = ({ update }) => {
                 type="text"
                 name="name"
                 value={newCar.owner.name}
+                required
                 onChange={(event) => handleChange(event, "owner.name")}
               />
             </div>
@@ -233,6 +244,7 @@ const AddCart = ({ update }) => {
                 type="text"
                 name="name"
                 value={newCar.owner.age}
+                required
                 onChange={(event) => handleChange(event, "owner.age")}
               />
             </div>
@@ -245,6 +257,7 @@ const AddCart = ({ update }) => {
                     type="text"
                     name="street"
                     value={newCar.owner.address.street}
+                    required
                     onChange={(event) =>
                       handleChange(event, "owner.address.street")
                     }
@@ -256,6 +269,7 @@ const AddCart = ({ update }) => {
                     type="text"
                     name="city"
                     value={newCar.owner.address.city}
+                    required
                     onChange={(event) =>
                       handleChange(event, "owner.address.city")
                     }
@@ -267,6 +281,7 @@ const AddCart = ({ update }) => {
                     type="text"
                     name="state"
                     value={newCar.owner.address.state}
+                    required
                     onChange={(event) =>
                       handleChange(event, "owner.address.state")
                     }
@@ -278,6 +293,7 @@ const AddCart = ({ update }) => {
                     type="text"
                     name="zipCode"
                     value={newCar.owner.address.zipCode}
+                    required
                     onChange={(event) =>
                       handleChange(event, "owner.address.zipCode")
                     }
@@ -293,6 +309,7 @@ const AddCart = ({ update }) => {
                   type="text"
                   name="phone"
                   value={newCar.owner.contact.phone}
+                  required
                   onChange={(event) =>
                     handleChange(event, "owner.contact.phone")
                   }
@@ -304,6 +321,7 @@ const AddCart = ({ update }) => {
                   type="text"
                   name="email"
                   value={newCar.owner.contact.email}
+                  required
                   onChange={(event) =>
                     handleChange(event, "owner.contact.email")
                   }
@@ -318,6 +336,7 @@ const AddCart = ({ update }) => {
                   type="text"
                   name="provider"
                   value={newCar.owner.insurance.provider}
+                  required
                   onChange={(event) =>
                     handleChange(event, "owner.insurance.provider")
                   }
@@ -329,6 +348,7 @@ const AddCart = ({ update }) => {
                   type="text"
                   name="policyNumber"
                   value={newCar.owner.insurance.policyNumber}
+                  required
                   onChange={(event) =>
                     handleChange(event, "owner.insurance.policyNumber")
                   }
@@ -340,47 +360,12 @@ const AddCart = ({ update }) => {
                   type="text"
                   name="coverage"
                   value={newCar.owner.insurance.coverage}
+                  required
                   onChange={(event) =>
                     handleChange(event, "owner.insurance.coverage")
                   }
                 />
               </div>
-            </div>
-          </div>
-          <div>
-            <h3>Обслуговування:</h3>
-            <div>
-              <label>Дата:</label>
-              <input
-                type="text"
-                name="date"
-                value={newCar.maintenanceRecords[0]?.date}
-                onChange={(event) =>
-                  handleChange(event, "maintenanceRecords.0.date")
-                }
-              />
-            </div>
-            <div>
-              <label>Опис:</label>
-              <input
-                type="text"
-                name="description"
-                value={newCar.maintenanceRecords[0]?.description}
-                onChange={(event) =>
-                  handleChange(event, "maintenanceRecords.0.description")
-                }
-              />
-            </div>
-            <div>
-              <label>Пробіг:</label>
-              <input
-                type="text"
-                name="mileage"
-                value={newCar.maintenanceRecords[0]?.mileage}
-                onChange={(event) =>
-                  handleChange(event, "maintenanceRecords.0.mileage")
-                }
-              />
             </div>
           </div>
         </div>

@@ -420,131 +420,132 @@ const CartDetails = () => {
         {cars.maintenanceRecords && (
           <div>
             <h3>Обслуговування:</h3>
-            {cars.maintenanceRecords.map((record, index) => (
-              <div key={index}>
-                <div className={styles.box}>
-                  <p>Дата:</p>
-                  {isEditing ? (
-                    <input
-                      onChange={(event) =>
-                        handleMaintenanceChange(
-                          index,
-                          "date",
-                          event.target.value
-                        )
-                      }
-                      value={record?.date || ""}
-                    />
-                  ) : (
-                    <p>{record.date}</p>
-                  )}
-                </div>
-                <div className={styles.box}>
-                  <p>Опис:</p>
-                  {isEditing ? (
-                    <input
-                      onChange={(event) =>
-                        handleMaintenanceChange(
-                          index,
-                          "description",
-                          event.target.value
-                        )
-                      }
-                      value={record?.description || ""}
-                    />
-                  ) : (
-                    <p>{record.description}</p>
-                  )}
-                </div>
-                <div className={styles.box}>
-                  <p>Пробіг:</p>
-                  {isEditing ? (
-                    <input
-                      onChange={(event) =>
-                        handleMaintenanceChange(
-                          index,
-                          "mileage",
-                          event.target.value
-                        )
-                      }
-                      value={record?.mileage || ""}
-                    />
-                  ) : (
-                    <p>{record.mileage}</p>
-                  )}
-                </div>
-                <div>
-                  <p>Центр обслуговування:</p>
-                  {isEditing ? (
-                    <>
+            {Array.isArray(cars.maintenanceRecords) &&
+              cars.maintenanceRecords.map((record, index) => (
+                <div key={index}>
+                  <div className={styles.box}>
+                    <p>Дата:</p>
+                    {isEditing ? (
                       <input
                         onChange={(event) =>
-                          handleMaintenanceRecordChange(
+                          handleMaintenanceChange(
                             index,
-                            "name",
+                            "date",
                             event.target.value
                           )
                         }
-                        value={record.serviceCenter.name}
+                        value={record?.date || ""}
                       />
+                    ) : (
+                      <p>{record.date}</p>
+                    )}
+                  </div>
+                  <div className={styles.box}>
+                    <p>Опис:</p>
+                    {isEditing ? (
                       <input
                         onChange={(event) =>
-                          handleMaintenanceRecordChange(
+                          handleMaintenanceChange(
                             index,
-                            "location",
+                            "description",
                             event.target.value
                           )
                         }
-                        value={record.serviceCenter.location}
+                        value={record?.description || ""}
                       />
-                    </>
-                  ) : (
-                    <>
-                      <p>{record.serviceCenter.location}</p>
-                      <p>{record.serviceCenter.name}</p>
-                    </>
-                  )}
+                    ) : (
+                      <p>{record.description}</p>
+                    )}
+                  </div>
+                  <div className={styles.box}>
+                    <p>Пробіг:</p>
+                    {isEditing ? (
+                      <input
+                        onChange={(event) =>
+                          handleMaintenanceChange(
+                            index,
+                            "mileage",
+                            event.target.value
+                          )
+                        }
+                        value={record?.mileage || ""}
+                      />
+                    ) : (
+                      <p>{record.mileage}</p>
+                    )}
+                  </div>
+                  <div>
+                    <p>Центр обслуговування:</p>
+                    {isEditing ? (
+                      <>
+                        <input
+                          onChange={(event) =>
+                            handleMaintenanceRecordChange(
+                              index,
+                              "name",
+                              event.target.value
+                            )
+                          }
+                          value={record.serviceCenter?.name}
+                        />
+                        <input
+                          onChange={(event) =>
+                            handleMaintenanceRecordChange(
+                              index,
+                              "location",
+                              event.target.value
+                            )
+                          }
+                          value={record.serviceCenter?.location}
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <p>{record.serviceCenter?.location}</p>
+                        <p>{record.serviceCenter?.name}</p>
+                      </>
+                    )}
+                  </div>
+                  <h4>Використані деталі:</h4>
+                  <ul>
+                    {record.partsUsed.map((part, partIndex) => (
+                      <li className={styles.item} key={partIndex}>
+                        {isEditing ? (
+                          <>
+                            <input
+                              onChange={(event) =>
+                                handleMaintenanceRecordChange(
+                                  index,
+                                  "quantity",
+                                  event.target.value,
+                                  partIndex
+                                )
+                              }
+                              value={part.quantity}
+                            />{" "}
+                            x{" "}
+                            <input
+                              onChange={(event) =>
+                                handleMaintenanceRecordChange(
+                                  index,
+                                  "name",
+                                  event.target.value,
+                                  partIndex
+                                )
+                              }
+                              value={part.name}
+                            />
+                          </>
+                        ) : (
+                          <>
+                            {part.quantity} x {part.name}
+                          </>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h4>Використані деталі:</h4>
-                <ul>
-                  {record.partsUsed.map((part, partIndex) => (
-                    <li className={styles.item} key={partIndex}>
-                      {isEditing ? (
-                        <>
-                          <input
-                            onChange={(event) =>
-                              handleMaintenanceRecordChange(
-                                index,
-                                "quantity",
-                                event.target.value,
-                                partIndex
-                              )
-                            }
-                            value={part.quantity}
-                          />{" "}
-                          x{" "}
-                          <input
-                            onChange={(event) =>
-                              handleMaintenanceRecordChange(
-                                index,
-                                "name",
-                                event.target.value,
-                                partIndex
-                              )
-                            }
-                            value={part.name}
-                          />
-                        </>
-                      ) : (
-                        <>
-                          {part.quantity} x {part.name}
-                        </>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+              ))}
           </div>
         )}
       </div>

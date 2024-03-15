@@ -50,11 +50,7 @@ function App() {
         />
         <Route exact path="/car/:id" element={<CartDetails />} />
         <Route exact path="/car/:id/edit" />
-        <Route
-          exact
-          path="/create"
-          element={<AddCart update={handleLoading()} />}
-        />
+        <Route exact path="/create" element={<AddCart />} />
       </Routes>
     </div>
   );
