@@ -1,4 +1,4 @@
-# React Pizza
+# React Auto
 
 - [DEMO LINK](nasytheslayer.github.io/react-pizza/)
 
