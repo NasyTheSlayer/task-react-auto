@@ -17,17 +17,17 @@ Project was created with:
 ## Setup
 1. Use 18.19.0 version of node.js:
 ```
-$ nvm use 14
+$ nvm use 18.19.0
 ```
 
 2. Clone the repository to your local machine, open terminal (GitBash for Windows users) and clone repo with command bellow:
 ```
-$ git clone https://github.com/NasyTheSlayer/react-pizza.git
+$ git clone https://github.com/NasyTheSlayer/task-react-auto
 ```
 
 3. Open project in terminal (or GitBash for Windows users):
 ```
-$ code react-pizza
+$ code task-react-auto
 ```
 
 4. Set up project and install necessary packages in the code-editor you use:
