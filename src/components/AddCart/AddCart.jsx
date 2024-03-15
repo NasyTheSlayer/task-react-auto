@@ -82,7 +82,7 @@ const AddCart = () => {
       .post(`https://2b812fea10d70016.mokky.dev/cars`, newCar)
       .then(() => {
         console.log("Acces");
-        havigate("/");
+        havigate("/task-react-auto/");
       })
       .catch((err) => {
         console.error(err);
@@ -90,7 +90,7 @@ const AddCart = () => {
   };
 
   const handleCancel = () => {
-    havigate("/");
+    havigate("/task-react-auto/");
   };
 
   return (

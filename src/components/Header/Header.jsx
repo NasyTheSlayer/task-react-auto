@@ -9,7 +9,7 @@ const Header = () => {
           <img
             width={40}
             height={40}
-            src="../img/header-logo.jpg"
+            src="img/header-logo.jpg"
             alt="headerLogo"
           />
           <div>
