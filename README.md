@@ -1,6 +1,6 @@
 # React Auto
 
-- [DEMO LINK](nasytheslayer.github.io/task-react-auto/)
+- [DEMO LINK](https://nasytheslayer.github.io/task-react-auto/)
 
 ## General info
 For the test assignment, the primary objective was to develop a web application according to specified requirements. The application was built using modern technologies such as ReactJS 18, React Router v6 for navigation, Axios and Fetch for data fetching from the API, and Prettier for code formatting. Styling was accomplished using CSS-Modules/SCSS to ensure modularity and maintainability.
