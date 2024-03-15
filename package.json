@@ -1,7 +1,6 @@
 {
   "name": "auto",
   "private": true,
-  "homepage": "https://nasytheslayer.github.io/task-react-auto/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

@@ -45,12 +45,16 @@ function App() {
       <Routes>
         <Route
           exact
-          path="/"
+          path="/task-react-auto/"
           element={<Home carts={carts} onDelete={onRemoveCarts} />}
         />
-        <Route exact path="/car/:id" element={<CartDetails />} />
-        <Route exact path="/car/:id/edit" />
-        <Route exact path="/create" element={<AddCart />} />
+        <Route
+          exact
+          path="/task-react-auto/car/:id"
+          element={<CartDetails />}
+        />
+        <Route exact path="/task-react-auto/car/:id/edit" />
+        <Route exact path="/task-react-auto/create" element={<AddCart />} />
       </Routes>
     </div>
   );
