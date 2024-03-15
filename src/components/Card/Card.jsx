@@ -23,7 +23,7 @@ const Card = ({ manufacturer, model, year, id, onDelete }) => {
           <p>
             <strong>Рік:</strong> {year}
           </p>
-          <Link className={styles.link} to={`/car/${id}`}>
+          <Link className={styles.link} to={`/task-react-auto/car/${id}`}>
             Детальний перегляд
           </Link>
         </li>

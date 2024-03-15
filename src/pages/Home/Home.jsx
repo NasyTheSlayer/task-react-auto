@@ -10,7 +10,7 @@ const Home = ({ carts, onDelete }) => {
 
   const handleShowAddForm = () => {
     setShowAddForm(true);
-    navigate("/create");
+    navigate("/task-react-auto/create");
   };
 
   return (
