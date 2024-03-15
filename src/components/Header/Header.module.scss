@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 40px;
+}
+
+.content {
+  text-decoration: none;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+
+  h3 {
+    text-transform: uppercase;
+
+    color: #000;
+    margin-bottom: 5px;
+  }
+
+  p {
+    opacity: 0.8;
+
+    color: rgb(148, 163, 184);
+  }
+}

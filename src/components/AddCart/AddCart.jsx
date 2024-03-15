@@ -1,0 +1,400 @@
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FcCancel } from "react-icons/fc";
+import { FiSave } from "react-icons/fi";
+
+import styles from "./AddCart.module.scss";
+
+const AddCart = ({ update }) => {
+  const [newCar, setNewCar] = useState({
+    manufacturer: "",
+    model: "",
+    year: "",
+    color: "",
+    engine: {
+      type: "",
+      horsepower: "",
+      fuelSystem: {
+        type: "",
+        efficiency: "",
+        emissions: {
+          co2: "",
+          nox: "",
+        },
+      },
+    },
+    battery: {
+      capacity: "",
+      chargingTime: "",
+      warranty: {
+        years: "",
+        coverage: "",
+      },
+      chargingStations: [],
+    },
+    features: [],
+    owner: {
+      name: "",
+      age: "",
+      address: {
+        street: "",
+        city: "",
+        state: "",
+        zipCode: "",
+      },
+      contact: {
+        phone: "",
+        email: "",
+      },
+      insurance: {
+        provider: "",
+        policyNumber: "",
+        coverage: [],
+      },
+    },
+    maintenanceRecords: [],
+  });
+
+  const havigate = useNavigate();
+  const handleChange = (event, pass) => {
+    const { value } = event.target;
+    setNewCar((prevState) => {
+      let newState = { ...prevState };
+      let carIntLevel = newState;
+      const passArray = pass.split(".");
+      let lastKey = passArray.pop();
+
+      for (const key of passArray) {
+        carIntLevel[key] = { ...carIntLevel[key] };
+        carIntLevel = carIntLevel[key];
+      }
+
+      carIntLevel[lastKey] = value;
+
+      return newState;
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post(`https://2b812fea10d70016.mokky.dev/cars`, newCar)
+      .then(() => {
+        console.log("Acces");
+        havigate("/");
+        update();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const handleCancel = () => {
+    havigate("/");
+  };
+
+  return (
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit}>
+        <div className={styles.content}>
+          <div>
+            <label>Марка:</label>
+            <input
+              type="text"
+              name="manufacturer"
+              value={newCar.manufacturer}
+              onChange={(event) => handleChange(event, "manufacturer")}
+            />
+          </div>
+          <div>
+            <label>Модель:</label>
+            <input
+              type="text"
+              name="model"
+              value={newCar.model}
+              onChange={(event) => handleChange(event, "model")}
+            />
+          </div>
+          <div>
+            <label>Рік:</label>
+            <input
+              type="number"
+              name="year"
+              value={newCar.year}
+              onChange={(event) => handleChange(event, "year")}
+            />
+          </div>
+          <div>
+            <label>Колір:</label>
+            <input
+              type="text"
+              name="color"
+              value={newCar.color}
+              onChange={(event) => handleChange(event, "color")}
+            />
+          </div>
+          <div>
+            <h3>Двигун:</h3>
+            <div>
+              <label>Тип двигуна:</label>
+              <input
+                type="text"
+                name="type"
+                value={newCar.engine.type}
+                onChange={(event) => handleChange(event, "engine.type")}
+              />
+            </div>
+            <div>
+              <label>Потужність:</label>
+              <input
+                type="text"
+                name="horsepower"
+                value={newCar.engine.horsepower}
+                onChange={(event) => handleChange(event, "engine.horsepower")}
+              />
+            </div>
+            <div>
+              <h4>Система пального:</h4>
+              <div>
+                <label>Тип</label>
+                <input
+                  type="text"
+                  name="type"
+                  value={newCar.engine.fuelSystem.type}
+                  onChange={(event) =>
+                    handleChange(event, "engine.fuelSystem.type")
+                  }
+                />
+              </div>
+              <div>
+                <label>Ефективність:</label>
+                <input
+                  type="text"
+                  name="efficiency"
+                  value={newCar.engine.fuelSystem.efficiency}
+                  onChange={(event) =>
+                    handleChange(event, "engine.fuelSystem.efficiency")
+                  }
+                />
+              </div>
+              <div>
+                <h5>Викиди:</h5>
+                <div>
+                  <label>CO2:</label>
+                  <input
+                    type="text"
+                    name="co2"
+                    value={newCar.engine.fuelSystem.emissions.co2}
+                    onChange={(event) =>
+                      handleChange(event, "engine.fuelSystem.emissions.co2")
+                    }
+                  />
+                </div>
+                <div>
+                  <label>NOx:</label>
+                  <input
+                    type="text"
+                    name="nox"
+                    value={newCar.engine.fuelSystem.emissions.nox}
+                    onChange={(event) =>
+                      handleChange(event, "engine.fuelSystem.emissions.nox")
+                    }
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3>Особливості:</h3>
+            <div>
+              <input
+                type="text"
+                name="features"
+                value={newCar.features}
+                onChange={(event) => handleChange(event, "features")}
+              />
+            </div>
+          </div>
+          <div>
+            <h3>Власник:</h3>
+            <div>
+              <label>Ім`я:</label>
+              <input
+                type="text"
+                name="name"
+                value={newCar.owner.name}
+                onChange={(event) => handleChange(event, "owner.name")}
+              />
+            </div>
+            <div>
+              <label>Вік:</label>
+              <input
+                type="text"
+                name="name"
+                value={newCar.owner.age}
+                onChange={(event) => handleChange(event, "owner.age")}
+              />
+            </div>
+            <div>
+              <h4>Адреса:</h4>
+              <div>
+                <div>
+                  <label>Вулиця:</label>
+                  <input
+                    type="text"
+                    name="street"
+                    value={newCar.owner.address.street}
+                    onChange={(event) =>
+                      handleChange(event, "owner.address.street")
+                    }
+                  />
+                </div>
+                <div>
+                  <label>Місто:</label>
+                  <input
+                    type="text"
+                    name="city"
+                    value={newCar.owner.address.city}
+                    onChange={(event) =>
+                      handleChange(event, "owner.address.city")
+                    }
+                  />
+                </div>
+                <div>
+                  <label>Штат:</label>
+                  <input
+                    type="text"
+                    name="state"
+                    value={newCar.owner.address.state}
+                    onChange={(event) =>
+                      handleChange(event, "owner.address.state")
+                    }
+                  />
+                </div>
+                <div>
+                  <label>Індекс:</label>
+                  <input
+                    type="text"
+                    name="zipCode"
+                    value={newCar.owner.address.zipCode}
+                    onChange={(event) =>
+                      handleChange(event, "owner.address.zipCode")
+                    }
+                  />
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4>Контакт:</h4>
+              <div>
+                <label>Телефон:</label>
+                <input
+                  type="text"
+                  name="phone"
+                  value={newCar.owner.contact.phone}
+                  onChange={(event) =>
+                    handleChange(event, "owner.contact.phone")
+                  }
+                />
+              </div>
+              <div>
+                <label>Електронна пошта:</label>
+                <input
+                  type="text"
+                  name="email"
+                  value={newCar.owner.contact.email}
+                  onChange={(event) =>
+                    handleChange(event, "owner.contact.email")
+                  }
+                />
+              </div>
+            </div>
+            <div>
+              <h4>Страховка:</h4>
+              <div>
+                <label>Постачальник:</label>
+                <input
+                  type="text"
+                  name="provider"
+                  value={newCar.owner.insurance.provider}
+                  onChange={(event) =>
+                    handleChange(event, "owner.insurance.provider")
+                  }
+                />
+              </div>
+              <div>
+                <label>Номер полісу:</label>
+                <input
+                  type="text"
+                  name="policyNumber"
+                  value={newCar.owner.insurance.policyNumber}
+                  onChange={(event) =>
+                    handleChange(event, "owner.insurance.policyNumber")
+                  }
+                />
+              </div>
+              <div>
+                <label>Покриття:</label>
+                <input
+                  type="text"
+                  name="coverage"
+                  value={newCar.owner.insurance.coverage}
+                  onChange={(event) =>
+                    handleChange(event, "owner.insurance.coverage")
+                  }
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3>Обслуговування:</h3>
+            <div>
+              <label>Дата:</label>
+              <input
+                type="text"
+                name="date"
+                value={newCar.maintenanceRecords[0]?.date}
+                onChange={(event) =>
+                  handleChange(event, "maintenanceRecords.0.date")
+                }
+              />
+            </div>
+            <div>
+              <label>Опис:</label>
+              <input
+                type="text"
+                name="description"
+                value={newCar.maintenanceRecords[0]?.description}
+                onChange={(event) =>
+                  handleChange(event, "maintenanceRecords.0.description")
+                }
+              />
+            </div>
+            <div>
+              <label>Пробіг:</label>
+              <input
+                type="text"
+                name="mileage"
+                value={newCar.maintenanceRecords[0]?.mileage}
+                onChange={(event) =>
+                  handleChange(event, "maintenanceRecords.0.mileage")
+                }
+              />
+            </div>
+          </div>
+        </div>
+        <button className={styles.save}>
+          <span>Зберегти</span>
+          <FiSave className={styles.saveIcon} />
+        </button>
+        <button className={styles.cancel} onClick={handleCancel}>
+          <span>Скасувати</span>
+          <FcCancel className={styles.cancelIcon} />
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default AddCart;

@@ -1,0 +1,66 @@
+.container {
+  padding: 15px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    background-color: #9370db;
+    color: azure;
+
+    width: 160px;
+    height: 40px;
+
+    border: 0;
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    @keyframes slideme {
+      0% {
+        left: -30px;
+        margin-left: 0px;
+      }
+      30% {
+        left: 110%;
+        margin-left: 80px;
+      }
+      100% {
+        left: 110%;
+        margin-left: 80px;
+      }
+    }
+
+    & {
+      overflow: hidden;
+      position: relative;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      width: 30px;
+      height: 200px;
+      margin-left: 60px;
+      background: #fff;
+      opacity: 0.5;
+      position: absolute;
+      left: -40px;
+      top: -100px;
+      z-index: 1;
+      transform: rotate(45deg);
+      transition: all 0.1s;
+      animation-name: slideme;
+      animation-duration: 3s;
+      animation-delay: 0.05s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+  }
+}
