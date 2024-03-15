@@ -15,7 +15,7 @@ Project was created with:
 - CSS-Modules / SCSS 
 
 ## Setup
-1. Use 14 version of node.js:
+1. Use 18.19.0 version of node.js:
 ```
 $ nvm use 14
 ```
