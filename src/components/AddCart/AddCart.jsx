@@ -6,7 +6,7 @@ import { FiSave } from "react-icons/fi";
 
 import styles from "./AddCart.module.scss";
 
-const AddCart = () => {
+const AddCart = ({ handleLoading }) => {
   const [newCar, setNewCar] = useState({
     manufacturer: "",
     model: "",
@@ -83,6 +83,7 @@ const AddCart = () => {
       .then(() => {
         console.log("Acces");
         havigate("/task-react-auto/");
+        handleLoading();
       })
       .catch((err) => {
         console.error(err);

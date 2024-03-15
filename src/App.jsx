@@ -54,7 +54,11 @@ function App() {
           element={<CartDetails />}
         />
         <Route exact path="/task-react-auto/car/:id/edit" />
-        <Route exact path="/task-react-auto/create" element={<AddCart />} />
+        <Route
+          exact
+          path="/task-react-auto/create"
+          element={<AddCart handleLoading={handleLoading} />}
+        />
       </Routes>
     </div>
   );
