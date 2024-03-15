@@ -4,7 +4,7 @@ import styles from "./Header.module.scss";
 const Header = () => {
   return (
     <header className={styles.container}>
-      <Link to={"/task-react-auto"} className={styles.content}>
+      <Link to={"/"} className={styles.content}>
         <div className={styles.text}>
           <img
             width={40}
